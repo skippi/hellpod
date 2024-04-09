@@ -12,7 +12,21 @@ import {
 } from "./data";
 import { useState } from "react";
 
-function chooseRandomKey<K extends string | number | symbol, V>(
+function recordSample<K extends string | number | symbol, V>(
+  record: Record<K, V>,
+  n: number,
+) {
+  const arr = Object.keys(record);
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+  return arr.slice(0, n);
+}
+
+function recordChoice<K extends string | number | symbol, V>(
   map: Record<K, V>,
 ) {
   const items = Object.keys(map);
@@ -20,23 +34,18 @@ function chooseRandomKey<K extends string | number | symbol, V>(
 }
 
 function App() {
-  const [primary, setPrimary] = useState(chooseRandomKey(primaryData));
-  const [secondary, setSecondary] = useState(chooseRandomKey(secondaryData));
-  const [grenade, setGrenade] = useState(chooseRandomKey(grenadeData));
-  const [stratagems, setStratagems] = useState([
-    chooseRandomKey(stratagemData),
-    chooseRandomKey(stratagemData),
-    chooseRandomKey(stratagemData),
-    chooseRandomKey(stratagemData),
-  ]);
-  const [booster, setBooster] = useState(chooseRandomKey(boosterData));
+  const [primary, setPrimary] = useState(recordChoice(primaryData));
+  const [secondary, setSecondary] = useState(recordChoice(secondaryData));
+  const [grenade, setGrenade] = useState(recordChoice(grenadeData));
+  const [stratagems, setStratagems] = useState(recordSample(stratagemData, 4));
+  const [booster, setBooster] = useState(recordChoice(boosterData));
 
-  const randomizeButtonClick = () => {
-    setPrimary(chooseRandomKey(primaryData));
-    setSecondary(chooseRandomKey(secondaryData));
-    setGrenade(chooseRandomKey(grenadeData));
-    setStratagems(stratagems.map(() => chooseRandomKey(stratagemData)));
-    setBooster(chooseRandomKey(boosterData));
+  const randomizeAll = () => {
+    setPrimary(recordChoice(primaryData));
+    setSecondary(recordChoice(secondaryData));
+    setGrenade(recordChoice(grenadeData));
+    setStratagems(recordSample(stratagemData, 4));
+    setBooster(recordChoice(boosterData));
   };
 
   return (
@@ -61,7 +70,7 @@ function App() {
         </div>
       </div>
       <div className="shareSection">
-        <div className="randomizeButton" onClick={randomizeButtonClick}>
+        <div className="randomizeButton" onClick={randomizeAll}>
           RANDOMIZE
         </div>
         <div className="shareButton">
