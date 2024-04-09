@@ -3,7 +3,7 @@ import "./App.css";
 import Booster from "./components/Booster";
 import Item from "./components/Item";
 import Stratagem from "./components/Stratagem";
-import { boosterData, itemData, stratagemData } from "./data";
+import { boosterData, grenadeData, itemData, primaryData, secondaryData, stratagemData } from "./data";
 import { useState } from "react";
 
 function chooseRandomKey<K extends string | number | symbol, V>(map: Record<K, V>) {
@@ -12,7 +12,9 @@ function chooseRandomKey<K extends string | number | symbol, V>(map: Record<K, V
 }
 
 function App() {
-  const [primary, setPrimary] = useState(chooseRandomKey(itemData))
+  const [primary, setPrimary] = useState(chooseRandomKey(primaryData))
+  const [secondary, setSecondary] = useState(chooseRandomKey(secondaryData))
+  const [grenade, setGrenade] = useState(chooseRandomKey(grenadeData))
   const [stratagems, setStratagems] = useState([
     chooseRandomKey(stratagemData),
     chooseRandomKey(stratagemData),
@@ -22,7 +24,9 @@ function App() {
   const [booster, setBooster] = useState(chooseRandomKey(boosterData))
 
   const randomizeButtonClick = () => {
-    setPrimary(chooseRandomKey(itemData))
+    setPrimary(chooseRandomKey(primaryData))
+    setSecondary(chooseRandomKey(secondaryData))
+    setGrenade(chooseRandomKey(grenadeData))
     setStratagems(stratagems.map(() => chooseRandomKey(stratagemData)))
     setBooster(chooseRandomKey(boosterData))
   }
@@ -36,8 +40,8 @@ function App() {
       <div className="subtitle">Helldivers 2 Builder</div>
       <div className="itemGrid">
         <Item option={primary} />
-        <Item />
-        <Item />
+        <Item option={secondary} />
+        <Item option={grenade} />
         <Item />
       </div>
       <div className="stratagemGrid">
