@@ -6,7 +6,6 @@ import Stratagem from "./components/Stratagem";
 import {
   boosterData,
   grenadeData,
-  itemData,
   primaryData,
   secondaryData,
   stratagemData,
@@ -39,9 +38,6 @@ function App() {
     setStratagems(stratagems.map(() => chooseRandomKey(stratagemData)));
     setBooster(chooseRandomKey(boosterData));
   };
-
-  console.log(primary);
-  console.log(itemData);
 
   return (
     <div className="main">
