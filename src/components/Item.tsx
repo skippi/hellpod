@@ -9,16 +9,12 @@ function Item({ option }: { option?: string }) {
   return (
     <div className="item">
       <div className="itemInner">
-        {entry && <img className="itemIcon" src={entry.image} />}
-        {entry && (
-          <div className="itemHint">
-            {entry.name}
-          </div>
-        )}
+        {entry && entry.image && <img className="itemIcon" src={entry.image} />}
+        {entry && <div className="itemHint">{entry.name}</div>}
       </div>
     </div>
   );
 }
 
-            // <!-- {entry.name.substr(0, entry.name.indexOf(" ") + 1)} -->
+// <!-- {entry.name.substr(0, entry.name.indexOf(" ") + 1)} -->
 export default Item;

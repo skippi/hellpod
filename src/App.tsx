@@ -4,6 +4,7 @@ import Booster from "./components/Booster";
 import Item from "./components/Item";
 import Stratagem from "./components/Stratagem";
 import {
+  armorData,
   boosterData,
   grenadeData,
   primaryData,
@@ -39,6 +40,7 @@ function App() {
   const [grenade, setGrenade] = useState(recordChoice(grenadeData));
   const [stratagems, setStratagems] = useState(recordSample(stratagemData, 4));
   const [booster, setBooster] = useState(recordChoice(boosterData));
+  const [armor, setArmor] = useState(recordChoice(armorData));
 
   const randomizeAll = () => {
     setPrimary(recordChoice(primaryData));
@@ -46,6 +48,7 @@ function App() {
     setGrenade(recordChoice(grenadeData));
     setStratagems(recordSample(stratagemData, 4));
     setBooster(recordChoice(boosterData));
+    setArmor(recordChoice(armorData));
   };
 
   return (
@@ -56,7 +59,7 @@ function App() {
         <Item option={primary} />
         <Item option={secondary} />
         <Item option={grenade} />
-        <Item />
+        <Item option={armor} />
       </div>
       <div className="stratagemGrid">
         {stratagems.map((id) => (
