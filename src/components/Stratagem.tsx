@@ -1,15 +1,15 @@
 import "./Stratagem.css";
-import { stratagemImages } from "@/data"
+import { stratagemData } from "@/data"
 
 function Stratagem({ option }: { option?: string }) {
-  let img = null;
-  if (option !== undefined && option in stratagemImages) {
-    img = stratagemImages[option]
+  let entry = null;
+  if (option && option in stratagemData) {
+    entry = stratagemData[option]
   }
   return (
     <div className="stratagem">
       <div className="stratagemInner">
-        {img !== null && <img className="stratagemIcon" src={img} />}
+        {entry && <img className="stratagemIcon" src={entry.image} />}
       </div>
     </div>
   );

@@ -3,24 +3,26 @@ import "./App.css";
 import Booster from "./components/Booster";
 import Item from "./components/Item";
 import Stratagem from "./components/Stratagem";
-import { stratagemImages } from "./data";
+import { boosterData, stratagemData } from "./data";
 import { useState } from "react";
 
-function randomStratagemId() {
-  const items = Object.keys(stratagemImages);
+function chooseRandomKey<K extends string | number | symbol, V>(map: Record<K, V>) {
+  const items = Object.keys(map);
   return items[Math.floor(Math.random() * items.length)];
 }
 
 function App() {
   const [stratagems, setStratagems] = useState([
-    randomStratagemId(),
-    randomStratagemId(),
-    randomStratagemId(),
-    randomStratagemId(),
+    chooseRandomKey(stratagemData),
+    chooseRandomKey(stratagemData),
+    chooseRandomKey(stratagemData),
+    chooseRandomKey(stratagemData),
   ]);
+  const [booster, setBooster] = useState(chooseRandomKey(boosterData))
 
   const randomizeButtonClick = () => {
-    setStratagems(stratagems.map(() => randomStratagemId()))
+    setStratagems(stratagems.map(() => chooseRandomKey(stratagemData)))
+    setBooster(chooseRandomKey(boosterData))
   }
 
   return (
@@ -39,8 +41,10 @@ function App() {
         ))}
       </div>
       <div className="boosterSection">
-        <Booster />
-        <div className="boosterName">INCREASED REINFORCEMENT BUDGET</div>
+        <Booster option={booster} />
+        <div className="boosterName">
+          {boosterData[booster].name.toUpperCase()}
+        </div>
       </div>
       <div className="shareSection">
         <div className="randomizeButton" onClick={randomizeButtonClick}>RANDOMIZE</div>

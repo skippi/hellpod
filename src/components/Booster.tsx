@@ -1,9 +1,15 @@
 import "./Booster.css";
+import { boosterData } from "@/data"
 
-function Booster() {
+function Booster({ option }: { option?: string }) {
+  let entry = null;
+  if (option && option in boosterData) {
+    entry = boosterData[option]
+  }
   return (
-    <div className="boosterIcon">
+    <div className="booster">
       <svg
+        className="boosterInner"
         width="97"
         viewBox="0 0 100 86"
         fill="none"
@@ -20,6 +26,7 @@ function Booster() {
           fill="#676767"
         />
       </svg>
+      {entry && <img className="boosterIcon" src={entry.image} />}
     </div>
   );
 }

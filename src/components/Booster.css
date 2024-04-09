@@ -1,5 +1,17 @@
-.boosterIcon {
+.booster {
+  position: relative;
   height: 86px;
   width: 100px;
+}
+
+.boosterInner {
+  position: absolute;
+}
+
+.boosterIcon {
+  position: absolute;
+  width: 83px;
+  height: 83px;
+  left: 7px;
 }
 
