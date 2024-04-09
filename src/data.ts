@@ -27,6 +27,13 @@ const primaryAssets = Object.values(
   }),
 );
 
+const secondaryAssets = Object.values(
+  import.meta.glob("./assets/secondaries/*.{webp,WEBP}", {
+    eager: true,
+    as: "url",
+  }),
+);
+
 function assetsToItemMap(assets: string[]): ItemDataMap {
   const result: ItemDataMap = {}
   for (const path of assets) {
@@ -44,4 +51,6 @@ function assetsToItemMap(assets: string[]): ItemDataMap {
 
 export const stratagemData = assetsToItemMap(stratagemAssets)
 export const boosterData = assetsToItemMap(boosterAssets)
-export const itemData = assetsToItemMap(primaryAssets)
+export const primaryData = assetsToItemMap(primaryAssets)
+export const secondaryData = assetsToItemMap(secondaryAssets)
+export const itemData = { ...primaryData, ...secondaryData }
