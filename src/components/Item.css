@@ -24,3 +24,19 @@
   inset: 0;
   margin: auto;
 }
+
+.itemHint {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  font-family: "FS Sinclair";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: right;
+
+  color: #ffffff;
+  margin-right: 4px;
+}

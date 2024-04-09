@@ -3,6 +3,11 @@
   src: url("./assets/Swiss 721 Extended.otf");
 }
 
+@font-face {
+  font-family: "FS Sinclair";
+  src: url("./assets/FS Sinclair Medium.otf");
+}
+
 .main {
   width: 430px;
   height: 932px;
