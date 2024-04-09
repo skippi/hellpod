@@ -14,3 +14,13 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.itemIcon {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
