@@ -3,36 +3,45 @@ import "./App.css";
 import Booster from "./components/Booster";
 import Item from "./components/Item";
 import Stratagem from "./components/Stratagem";
-import { boosterData, grenadeData, itemData, primaryData, secondaryData, stratagemData } from "./data";
+import {
+  boosterData,
+  grenadeData,
+  itemData,
+  primaryData,
+  secondaryData,
+  stratagemData,
+} from "./data";
 import { useState } from "react";
 
-function chooseRandomKey<K extends string | number | symbol, V>(map: Record<K, V>) {
+function chooseRandomKey<K extends string | number | symbol, V>(
+  map: Record<K, V>,
+) {
   const items = Object.keys(map);
   return items[Math.floor(Math.random() * items.length)];
 }
 
 function App() {
-  const [primary, setPrimary] = useState(chooseRandomKey(primaryData))
-  const [secondary, setSecondary] = useState(chooseRandomKey(secondaryData))
-  const [grenade, setGrenade] = useState(chooseRandomKey(grenadeData))
+  const [primary, setPrimary] = useState(chooseRandomKey(primaryData));
+  const [secondary, setSecondary] = useState(chooseRandomKey(secondaryData));
+  const [grenade, setGrenade] = useState(chooseRandomKey(grenadeData));
   const [stratagems, setStratagems] = useState([
     chooseRandomKey(stratagemData),
     chooseRandomKey(stratagemData),
     chooseRandomKey(stratagemData),
     chooseRandomKey(stratagemData),
   ]);
-  const [booster, setBooster] = useState(chooseRandomKey(boosterData))
+  const [booster, setBooster] = useState(chooseRandomKey(boosterData));
 
   const randomizeButtonClick = () => {
-    setPrimary(chooseRandomKey(primaryData))
-    setSecondary(chooseRandomKey(secondaryData))
-    setGrenade(chooseRandomKey(grenadeData))
-    setStratagems(stratagems.map(() => chooseRandomKey(stratagemData)))
-    setBooster(chooseRandomKey(boosterData))
-  }
+    setPrimary(chooseRandomKey(primaryData));
+    setSecondary(chooseRandomKey(secondaryData));
+    setGrenade(chooseRandomKey(grenadeData));
+    setStratagems(stratagems.map(() => chooseRandomKey(stratagemData)));
+    setBooster(chooseRandomKey(boosterData));
+  };
 
-  console.log(primary)
-  console.log(itemData)
+  console.log(primary);
+  console.log(itemData);
 
   return (
     <div className="main">
@@ -56,7 +65,9 @@ function App() {
         </div>
       </div>
       <div className="shareSection">
-        <div className="randomizeButton" onClick={randomizeButtonClick}>RANDOMIZE</div>
+        <div className="randomizeButton" onClick={randomizeButtonClick}>
+          RANDOMIZE
+        </div>
         <div className="shareButton">
           <MdOutlineContentCopy color="#5D854A" size={32} />
         </div>

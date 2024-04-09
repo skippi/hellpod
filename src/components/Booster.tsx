@@ -1,10 +1,10 @@
 import "./Booster.css";
-import { boosterData } from "@/data"
+import { boosterData } from "@/data";
 
 function Booster({ option }: { option?: string }) {
   let entry = null;
   if (option && option in boosterData) {
-    entry = boosterData[option]
+    entry = boosterData[option];
   }
   return (
     <div className="booster">

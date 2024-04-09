@@ -1,10 +1,10 @@
 interface ItemData {
-  id: string
-  name: string
-  image: string
+  id: string;
+  name: string;
+  image: string;
 }
 
-type ItemDataMap = { [id: string]: ItemData }
+type ItemDataMap = { [id: string]: ItemData };
 
 const stratagemAssets = Object.values(
   import.meta.glob("./assets/stratagems/*.{png,PNG}", {
@@ -42,23 +42,28 @@ const grenadeAssets = Object.values(
 );
 
 function assetsToItemMap(assets: string[]): ItemDataMap {
-  const result: ItemDataMap = {}
+  const result: ItemDataMap = {};
   for (const path of assets) {
     const url = new URL(path, import.meta.url).href;
-    const name = decodeURI(path).split("/").reverse()[0].replace(/\.[^/.]+$/, "").replace("_", "/").replace("\"", "");
+    const name = decodeURI(path)
+      .split("/")
+      .reverse()[0]
+      .replace(/\.[^/.]+$/, "")
+      .replace("_", "/")
+      .replace('"', "");
     const id = name.replace(/\s+/g, "-").toLowerCase();
     result[id] = {
       id,
       name,
-      image: url
-    }
+      image: url,
+    };
   }
-  return result
+  return result;
 }
 
-export const stratagemData = assetsToItemMap(stratagemAssets)
-export const boosterData = assetsToItemMap(boosterAssets)
-export const primaryData = assetsToItemMap(primaryAssets)
-export const secondaryData = assetsToItemMap(secondaryAssets)
-export const grenadeData = assetsToItemMap(grenadeAssets)
-export const itemData = { ...primaryData, ...secondaryData, ...grenadeData }
+export const stratagemData = assetsToItemMap(stratagemAssets);
+export const boosterData = assetsToItemMap(boosterAssets);
+export const primaryData = assetsToItemMap(primaryAssets);
+export const secondaryData = assetsToItemMap(secondaryAssets);
+export const grenadeData = assetsToItemMap(grenadeAssets);
+export const itemData = { ...primaryData, ...secondaryData, ...grenadeData };
