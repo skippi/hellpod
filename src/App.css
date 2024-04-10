@@ -135,4 +135,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .shareButton:hover {
+    background-color: #343434;
+  }
 }

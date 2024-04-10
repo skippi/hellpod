@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdOutlineContentCopy } from "react-icons/md";
+import { FaLink } from "react-icons/fa6";
 import "./App.css";
 import Booster from "./components/Booster";
 import Item from "./components/Item";
@@ -76,8 +76,13 @@ function App() {
         <div className="randomizeButton" onClick={randomizeAll}>
           RANDOMIZE
         </div>
-        <div className="shareButton">
-          <MdOutlineContentCopy color="#5D854A" size={32} />
+        <div
+          className="shareButton"
+          onClick={() => {
+            navigator.clipboard.writeText(window.location.href);
+          }}
+        >
+          <FaLink color="#5D854A" size={32} />
         </div>
       </div>
       <div className="footer">
