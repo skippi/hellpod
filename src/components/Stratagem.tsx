@@ -1,5 +1,5 @@
-import "./Stratagem.css";
 import { stratagemData } from "@/data";
+import "./Stratagem.css";
 
 function Stratagem({ option }: { option?: string }) {
   let entry = null;

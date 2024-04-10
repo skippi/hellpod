@@ -1,6 +1,6 @@
+import { boosterData } from "@/data";
 import { useState } from "react";
 import "./Booster.css";
-import { boosterData } from "@/data";
 
 const defaultBorderColor = "#676767";
 const hoverBorderColor = "#a7a7a7";

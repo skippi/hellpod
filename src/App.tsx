@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { MdOutlineContentCopy } from "react-icons/md";
 import "./App.css";
 import Booster from "./components/Booster";
@@ -11,7 +12,6 @@ import {
   secondaryData,
   stratagemData,
 } from "./data";
-import { useState } from "react";
 
 function recordSample<K extends string | number | symbol, V>(
   record: Record<K, V>,
