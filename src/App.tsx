@@ -86,9 +86,11 @@ function App() {
         </div>
       </div>
       <div className="footer">
-        © skippi, 2024
-        <br />
-        All Helldivers art belongs to Arrowhead Studios
+        <span>
+          © skippi, 2024
+          <br />
+          All Helldivers art belongs to Arrowhead Studios
+        </span>
       </div>
     </div>
   );
