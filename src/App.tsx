@@ -53,7 +53,7 @@ function App() {
 
   return (
     <div className="main">
-      <div className="title">HELLPOD.IO</div>
+      <div className="title">HELLPOD.GG</div>
       <div className="subtitle">Helldivers 2 Builder</div>
       <div className="itemGrid">
         <Item option={primary} />
